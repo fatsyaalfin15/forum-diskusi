@@ -18,5 +18,5 @@ test('should render login page', () => {
   );
 
   // Menggunakan getByRole agar spesifik memilih elemen heading, menghindari konflik dengan tombol Login
-  expect(screen.getByRole('heading', { name: /register/i })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: /login/i })).toBeInTheDocument();
 });
