@@ -20,6 +20,10 @@ describe('threadsSlice reducer', () => {
     expect(nextState.data).toEqual(threads);
   });
 
+  test('CI ERROR sengaja', () => {
+  expect(1).toBe(2);
+});
+
   test('should handle fetchThreads rejected', () => {
     const action = {
       type: fetchThreads.rejected.type,
