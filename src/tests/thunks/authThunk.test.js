@@ -24,17 +24,17 @@ describe('authThunk', () => {
   });
 
   test('asyncLogin failed should return rejected action', async () => {
-  fetch.mockResolvedValueOnce({
-    json: async () => ({
-      status: 'fail',
-      message: 'Login gagal',
-    }),
+    fetch.mockResolvedValueOnce({
+      json: async () => ({
+        status: 'fail',
+        message: 'Login gagal',
+      }),
+    });
+
+    const dispatch = jest.fn();
+    const result = await asyncLogin({ email: 'test', password: 'wrong' })(dispatch);
+
+    expect(result.type).toBe('auth/login/rejected');
+    expect(result.error.message).toBe('Login gagal');
   });
-
-  const dispatch = jest.fn();
-  const result = await asyncLogin({ email: 'test', password: 'wrong' })(dispatch);
-
-  expect(result.type).toBe('auth/login/rejected');
-  expect(result.error.message).toBe('Login gagal');
-});
 });

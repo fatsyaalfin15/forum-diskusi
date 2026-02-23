@@ -21,4 +21,16 @@ export default [{
       version: 'detect',
     },
   },
-}, ...storybook.configs["flat/recommended"]];
+}, ...storybook.configs["flat/recommended"], {
+  // Config for Jest test files
+  files: ['src/tests/**/*.{js,jsx}'],
+  languageOptions: {
+    globals: globals.jest,
+  },
+}, {
+  // Config for Cypress E2E test files
+  files: ['cypress/e2e/**/*.cy.js'],
+  languageOptions: {
+    globals: globals.cypress,
+  },
+}];
