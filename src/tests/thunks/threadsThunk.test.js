@@ -23,18 +23,18 @@ describe('threadsThunk', () => {
     expect(result.payload).toEqual(fakeThreads);
   });
 
- test('fetchThreads failed should return rejected action', async () => {
-  fetch.mockResolvedValueOnce({
-    json: async () => ({
-      status: 'fail',
-      message: 'Error fetch',
-    }),
+  test('fetchThreads failed should return rejected action', async () => {
+    fetch.mockResolvedValueOnce({
+      json: async () => ({
+        status: 'fail',
+        message: 'Error fetch',
+      }),
+    });
+
+    const dispatch = jest.fn();
+    const result = await fetchThreads()(dispatch);
+
+    expect(result.type).toBe('threads/fetch/rejected');
+    expect(result.error.message).toBe('Error fetch');
   });
-
-  const dispatch = jest.fn();
-  const result = await fetchThreads()(dispatch);
-
-  expect(result.type).toBe('threads/fetch/rejected');
-  expect(result.error.message).toBe('Error fetch');
-});
 });

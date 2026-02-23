@@ -3,7 +3,8 @@ describe('Vote Thread', () => {
     const email = `vote${Date.now()}@test.com`;
     const password = 'password123';
 
-    // Register dulu
+
+    // Register dulu baru sudah itu ada login
     cy.visit('/register');
     cy.get('input[placeholder="Nama"]').type('Vote Tester');
     cy.get('input[placeholder="Email"]').type(email);
